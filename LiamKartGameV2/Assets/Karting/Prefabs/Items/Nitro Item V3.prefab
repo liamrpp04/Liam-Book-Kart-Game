@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ffc2fb8354dc0418bf30eb0e6bfa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recoverValue: 1
+  recoverValue: 0.25
 --- !u!114 &1465371813737508024
 MonoBehaviour:
   m_ObjectHideFlags: 0
