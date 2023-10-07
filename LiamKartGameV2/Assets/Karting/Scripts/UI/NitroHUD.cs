@@ -73,7 +73,7 @@ public class NitroHUD : MonoBehaviour
         nitroBar.value = value;
 
         float valuePercent = value * 100f / maxValue;
-        txtNitroPercent.text = valuePercent.ToString("0.0") + "%";
+        txtNitroPercent.text = valuePercent.ToString("0") + "%";
 
         SetColor(value, maxValue);
     }

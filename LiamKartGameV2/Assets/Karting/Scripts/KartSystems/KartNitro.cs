@@ -8,7 +8,7 @@ public class KartNitro : KartComponent
     [SerializeField] private float wasteDelta = 10;
     [SerializeField] private float topSpeedMultiplier = 2f;
     [SerializeField] private float accelerationMultiplier = 2.5f;
-    [SerializeField] private GameObject effect;
+    [SerializeField] private GameObject[] effects;
 
     // Recharge
     [SerializeField] private float fullRechargeTime = 4f;
@@ -20,9 +20,13 @@ public class KartNitro : KartComponent
     float baseTopSpeed;
     float baseAcceleration;
 
+    MobileControlsHUD mobileControls;
+
     // Start is called before the first frame update
     void Start()
     {
+        mobileControls = MobileControlsHUD.Instance;
+
         nitroValue = 0;
         UpdateNitroHUD();
 
@@ -71,15 +75,15 @@ public class KartNitro : KartComponent
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || mobileControls.NitroPressedDown)
         {
             StartNitro();
         }
-        else if (Input.GetKey(KeyCode.Space))
+        else if (Input.GetKey(KeyCode.Space) || mobileControls.NitroIsPressed)
         {
             ApplyNitro();
         }
-        else if (Input.GetKeyUp(KeyCode.Space))
+        else if (Input.GetKeyUp(KeyCode.Space) || mobileControls.NitroPressedUp)
         {
             StopNitro();
         }
@@ -136,22 +140,28 @@ public class KartNitro : KartComponent
 
     void SetActiveEffect(bool active)
     {
-        if (effect == null) return;
+        for (int i = 0; i < effects.Length; i++)
+        {
+            var effect = effects[i];
 
-        var partycles = effect.GetComponentsInChildren<ParticleSystem>();
-        if (active)
-        {
-            foreach (var partycle in partycles)
+            if (effect == null) return;
+
+            var partycles = effect.GetComponentsInChildren<ParticleSystem>();
+            if (active)
             {
-                partycle.Play();
+                foreach (var partycle in partycles)
+                {
+                    partycle.Play();
+                }
+            }
+            else
+            {
+                foreach (var partycle in partycles)
+                {
+                    partycle.Stop();
+                }
             }
         }
-        else
-        {
-            foreach (var partycle in partycles)
-            {
-                partycle.Stop();
-            }
-        }
+
     }
 }

@@ -5,28 +5,28 @@ namespace KartGame.KartSystems
 
     public class KeyboardInput : BaseInput
     {
-        public bool IsMobile = true;
         public bool IsPlayer = false;
         public string TurnInputName = "Horizontal";
         public string AccelerateButtonName = "Accelerate";
         public string BrakeButtonName = "Brake";
-        public Joystick joystick;
+
+        MobileControlsHUD mobileControls;
+
+        private void Start()
+        {
+            mobileControls = MobileControlsHUD.Instance;
+        }
 
         public override InputData GenerateInput()
         {
+            if (!IsPlayer)
+                return default;
+
             InputData data = new InputData();
-            if (IsMobile && IsPlayer)
-            {
-                data.TurnInput = joystick.Horizontal;
-                data.Accelerate = joystick.Vertical > 0;
-                data.Brake = joystick.Vertical < 0;
-            }
-            else
-            {
-                data.TurnInput = Input.GetAxis("Horizontal");
-                data.Accelerate = Input.GetButton(AccelerateButtonName);
-                data.Brake = Input.GetButton(BrakeButtonName);
-            }
+
+            data.TurnInput = mobileControls.JoystickHorizontal != 0 ? mobileControls.JoystickHorizontal : Input.GetAxis("Horizontal");
+            data.Accelerate = mobileControls.JoystickVertical > 0 || Input.GetButton(AccelerateButtonName);
+            data.Brake = mobileControls.JoystickVertical < 0 || Input.GetButton(BrakeButtonName);
 
             return data;
         }

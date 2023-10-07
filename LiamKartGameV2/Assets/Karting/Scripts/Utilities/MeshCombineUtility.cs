@@ -62,7 +62,8 @@ public static class MeshCombineUtility
             Transform t = meshRenderer.GetComponent<Transform>();
             Material[] materials = meshRenderer.sharedMaterials;
 
-            for (int s = 0; s < mesh.subMeshCount; s++)
+            //for (int s = 0; s < mesh.subMeshCount; s++)
+            for (int s = 0; s < materials.Length; s++)
             {
                 if (materials[s] == null)
                     continue;
