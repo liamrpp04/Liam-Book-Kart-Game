@@ -23,7 +23,7 @@ public class MobileControlsHUD : MonoBehaviour
     {
         Instance = this;
 
-#if UNITY_ANDROID || UNITY_IOS
+#if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR  
         IsMobile = true;
 #else
         IsMobile = false;
