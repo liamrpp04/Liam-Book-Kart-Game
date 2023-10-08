@@ -10,8 +10,8 @@ public class MobileControlsHUD : MonoBehaviour
     [SerializeField] private InputButton btnNitro;
     [SerializeField] private InputButton btnItem;
 
-    public float JoystickHorizontal => joystick.Horizontal;
-    public float JoystickVertical => joystick.Vertical;
+    public float JoystickHorizontal => Mathf.Abs(joystick.Horizontal) > 0.1f ? joystick.Horizontal : 0;
+    public float JoystickVertical => Mathf.Abs(joystick.Vertical) > 0.1f ? joystick.Vertical : 0;
 
     public bool NitroPressedDown => btnNitro.PressedDown;
     public bool NitroIsPressed => btnNitro.IsPressed;
