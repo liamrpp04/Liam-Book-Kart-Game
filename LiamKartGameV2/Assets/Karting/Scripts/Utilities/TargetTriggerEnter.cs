@@ -15,6 +15,7 @@ public class TargetTriggerEnter : MonoBehaviour
     [SerializeField] private string targetTag = "Player";
     [SerializeField] private AfterBHV afterBhv = AfterBHV.DisableObject;
     public UnityEvent<Collider> OnTargetTriggerEnter;
+    public UnityEvent<Collider> OnTargetTriggerExit;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,6 +26,14 @@ public class TargetTriggerEnter : MonoBehaviour
                 gameObject.SetActive(false);
             else if (afterBhv == AfterBHV.DisableCollider)
                 gameObject.GetComponent<Collider>().enabled = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(targetTag))
+        {
+            OnTargetTriggerExit?.Invoke(other);
         }
     }
 }

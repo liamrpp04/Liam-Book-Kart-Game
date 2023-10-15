@@ -73,7 +73,8 @@ public class KartMudBlocker : KartComponent
 
             if (isPlayer)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                bool isAttempt = MobileControlsHUD.Instance.IsMobile ? Input.GetMouseButtonDown(0) : Input.GetKeyDown(KeyCode.Space);
+                if (isAttempt)
                 {
                     keyRepeatTimes++;
 

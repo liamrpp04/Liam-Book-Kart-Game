@@ -62,6 +62,17 @@ public class InGameMenuManager : MonoBehaviour
         }
     }
 
+    public void OpenMenu()
+    {
+        if (controlImage.activeSelf)
+        {
+            controlImage.SetActive(false);
+            return;
+        }
+
+        SetPauseMenuActivation(true);
+    }
+
     public void ClosePauseMenu()
     {
         SetPauseMenuActivation(false);
