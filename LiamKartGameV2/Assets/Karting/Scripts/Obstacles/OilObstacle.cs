@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MudSlider : MonoBehaviour
+public class OilObstacle : MonoBehaviour
 {
     [SerializeField] private TargetTriggerEnter targetTrigger;
 
