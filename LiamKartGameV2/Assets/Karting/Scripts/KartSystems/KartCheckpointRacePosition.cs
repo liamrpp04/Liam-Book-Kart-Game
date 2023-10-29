@@ -7,6 +7,7 @@ public class KartCheckpointRacePosition : KartComponent
 {
     [HideInInspector] public int racePos;
     [HideInInspector] public Checkpoint targetCheckpoint;
+    [HideInInspector] public int currentLap = 1;
 
     private void Start()
     {
@@ -15,6 +16,6 @@ public class KartCheckpointRacePosition : KartComponent
 
     private void Update()
     {
-        if (isPlayer) RacePositionHUD.Instance.SetPositionHUD(racePos);
+        if (isPlayer) RacePositionHUD.Instance.SetPositionHUD(racePos, currentLap);
     }
 }

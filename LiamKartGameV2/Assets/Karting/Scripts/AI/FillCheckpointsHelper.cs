@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using KartGame.AI;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,3 +19,4 @@ public class FillCheckpointsHelper
         }
     }
 }
+#endif

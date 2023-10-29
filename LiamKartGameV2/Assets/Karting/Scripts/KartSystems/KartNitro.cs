@@ -60,6 +60,11 @@ public class KartNitro : KartComponent
     // Update is called once per frame
     void Update()
     {
+        if (!isPlayer)
+        {
+            return;
+        }
+
         if (!kart.GetCanMove()) return;
 
         if (isRecharging)
@@ -104,6 +109,7 @@ public class KartNitro : KartComponent
         kart.baseStats.Acceleration = baseAcceleration * accelerationMultiplier;
         //
         SetActiveEffect(true);
+        SFXManager.PlaySound("nitro");
     }
 
     private void ApplyNitro()

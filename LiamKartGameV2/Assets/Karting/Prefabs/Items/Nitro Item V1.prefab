@@ -78,6 +78,9 @@ MonoBehaviour:
   OnTargetTriggerEnter:
     m_PersistentCalls:
       m_Calls: []
+  OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &394847217412370261
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +121,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394847217412370261}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 5f124cde464e98c4b8c767b50b0b60ac, type: 2}
 --- !u!23 &394847217412370259
 MeshRenderer:
   m_ObjectHideFlags: 0

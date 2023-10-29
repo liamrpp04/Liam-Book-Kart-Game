@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using static PlasticPipe.PlasticProtocol.Messages.Serialization.ItemHandlerMessagesSerialization;
-using static UnityEditor.PlayerSettings;
 
 public class CheckpointsManager : MonoBehaviour
 {
@@ -49,19 +45,29 @@ public class CheckpointsManager : MonoBehaviour
     {
         int kartPos = GetKartsCount();
 
-        for (int i = 0; i < checkpointCheckers.Count; i++)
-        {
-            CheckpointChecker checker = checkpointCheckers[i];
-            SortKartsInChecker(checker);
+        int lapCheck = 1;
 
-            // Add race pos
-            for (int j = 0; j < checker.karts.Count; j++)
+        while (lapCheck <= 3)
+        {
+            for (int i = 0; i < checkpointCheckers.Count; i++)
             {
-                checker.karts[j].racePos = kartPos;
-                kartPos--;
-                if (kartPos <= 0)
-                    return;
+                CheckpointChecker checker = checkpointCheckers[i];
+                SortKartsInChecker(checker);
+
+                // Add race pos
+
+                for (int j = 0; j < checker.karts.Count; j++)
+                {
+                    if (checker.karts[j].currentLap != lapCheck)
+                        continue;
+
+                    checker.karts[j].racePos = kartPos;
+                    kartPos--;
+                    if (kartPos <= 0)
+                        return;
+                }
             }
+            lapCheck++;
         }
     }
 
@@ -110,6 +116,16 @@ public class CheckpointsManager : MonoBehaviour
         return checkpointCheckers[0];
     }
 
+    private bool IsFirstChecker(CheckpointChecker checker)
+    {
+        return checker == checkpointCheckers[0];
+    }
+
+    private bool IsLastChecker(CheckpointChecker checker)
+    {
+        return checker == checkpointCheckers[checkpointCheckers.Count - 1];
+    }
+
     public void MoveKartToNextChecker(Checkpoint reachedCheckpoint, KartCheckpointRacePosition kart)
     {
         CheckpointChecker currentChecker = GetChecker(kart.targetCheckpoint);
@@ -117,6 +133,36 @@ public class CheckpointsManager : MonoBehaviour
 
         CheckpointChecker nextChecker = GetNextChecker(reachedCheckpoint);
         nextChecker.AddKart(kart);
+
+        if (IsLastChecker(currentChecker) && IsFirstChecker(nextChecker))
+        {
+            print("VUELTA COMPLETA");
+
+            if (kart.currentLap == 3)
+            {
+                // FINISH ITS RACE ...
+                if (kart.isPlayer)
+                {
+                    if (kart.racePos == 1)
+                    {
+                        // PLAYER WIN ...
+                        WinLoseHUD.Instance.ShowWinMessage();
+                        ChangeSceneFadeUI.Instance.ChangeScene("WinScene", 5f);
+                    }
+                    else
+                    {
+                        // PLAYER LOSE ...
+                        WinLoseHUD.Instance.ShowLoseMessage();
+                        ChangeSceneFadeUI.Instance.ChangeScene("LoseScene", 5f);
+
+                    }
+                }
+            }
+            else
+            {
+                kart.currentLap++;
+            }
+        }
 
     }
 
@@ -155,7 +201,7 @@ public class CheckpointsManager : MonoBehaviour
 
 //        if (GUILayout.Button("Fill Debug Ray"))
 //        {
-            
+
 //        }
 //        serializedObject.ApplyModifiedProperties();
 //    }

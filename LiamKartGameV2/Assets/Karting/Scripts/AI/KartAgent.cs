@@ -4,7 +4,6 @@ using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using UnityEditor.SceneManagement;
 
 namespace KartGame.AI
 {
@@ -296,13 +295,15 @@ namespace KartGame.AI
             };
         }
 
+#if UNITY_EDITOR
         [ContextMenu("Set agent colliders")]
         public void SetAgentColliders()
         {
             var manager = FindObjectOfType<CheckpointsManager>();
             Colliders = manager.GetComponentsInChildren<Collider>();
-            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene());
 
         }
+#endif
     }
 }

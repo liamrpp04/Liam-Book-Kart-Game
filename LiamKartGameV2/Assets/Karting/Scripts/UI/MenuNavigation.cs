@@ -6,6 +6,11 @@ public class MenuNavigation : MonoBehaviour
 {
     public Selectable defaultSelection;
 
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.None;

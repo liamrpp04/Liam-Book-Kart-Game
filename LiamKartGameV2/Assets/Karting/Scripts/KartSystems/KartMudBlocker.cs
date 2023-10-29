@@ -76,6 +76,7 @@ public class KartMudBlocker : KartComponent
                 bool isAttempt = MobileControlsHUD.Instance.IsMobile ? Input.GetMouseButtonDown(0) : Input.GetKeyDown(KeyCode.Space);
                 if (isAttempt)
                 {
+                    SFXManager.PlaySound("mudPunch");
                     keyRepeatTimes++;
 
                     transform.localScale = targetScale;

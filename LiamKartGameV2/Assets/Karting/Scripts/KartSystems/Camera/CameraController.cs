@@ -14,15 +14,21 @@ public class CameraController : MonoBehaviour
         vcam = GetComponent<CinemachineVirtualCamera>();
         transposer = vcam.GetCinemachineComponent<CinemachineTransposer>();
     }
+
+    bool a = false;
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse2))
+        if (MobileControlsHUD.Instance.LookBackPressedDown)
         {
+            print("DOWN");
+
             InvertZOffset();
         }
-        else if (Input.GetKeyUp(KeyCode.Mouse2))
+        else if (MobileControlsHUD.Instance.LookBackPressedUp)
         {
+            print("UP");
+
             InvertZOffset();
         }
     }

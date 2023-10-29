@@ -30,24 +30,27 @@ public class InputButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     }
 
 
-    void Update()
+    void LateUpdate()
     {
-        if (_waitFrame)
-        {
-            _waitFrame = false;
-            return;
-        }
+        //if (_waitFrame)
+        //{
+        //    _waitFrame = false;
+        //    return;
+        //}
 
-        if (PressedUp)
+        if (PressedDown)
+        {
+            PressedDown = false;
+        }
+        else if (PressedUp)
         {
             PressedUp = false;
-            return;
         }
 
         if (!IsPressed)
             return;
 
-        PressedDown = false;
+        //PressedDown = false;
         onHoldCallback?.Invoke();
     }
 }
