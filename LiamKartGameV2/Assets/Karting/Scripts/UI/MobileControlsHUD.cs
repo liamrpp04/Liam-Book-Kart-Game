@@ -6,15 +6,16 @@ public class MobileControlsHUD : MonoBehaviour
 {
     public static MobileControlsHUD Instance;
     public bool IsMobile { get; private set; }
-
+    [SerializeField] private float SensitivityX = 0.15f;
+    [SerializeField] private float SensitivityY = 0.15f;
     [SerializeField] private Joystick joystick;
     [SerializeField] private InputButton btnNitro;
     [SerializeField] private InputButton btnItem;
     [SerializeField] private InputButton btnLookBack;
     [SerializeField] private Image rechargeOilItemImage;
 
-    public float JoystickHorizontal => Mathf.Abs(joystick.Horizontal) > 0.1f ? joystick.Horizontal : 0;
-    public float JoystickVertical => Mathf.Abs(joystick.Vertical) > 0.1f ? joystick.Vertical : 0;
+    public float JoystickHorizontal => Mathf.Abs(joystick.Horizontal) > SensitivityX ? joystick.Horizontal : 0;
+    public float JoystickVertical => Mathf.Abs(joystick.Vertical) > SensitivityY ? joystick.Vertical : 0;
 
     public bool NitroPressedDown => btnNitro.PressedDown;
     public bool NitroIsPressed => btnNitro.IsPressed;
