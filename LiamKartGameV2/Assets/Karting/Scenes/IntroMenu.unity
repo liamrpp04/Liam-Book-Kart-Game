@@ -1203,6 +1203,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 4b3acc6abbc935344bc83aaa0e6f523d, type: 3}
   - id: oilActivator
     audioClip: {fileID: 8300000, guid: fd23486b0c8a0ed47811fcf1c814c72e, type: 3}
+  - id: boxCrash
+    audioClip: {fileID: 8300000, guid: 7baac98e206a30049a72a21411e6e62b, type: 3}
   effectSource: {fileID: 374606863}
 --- !u!82 &374606863
 AudioSource:

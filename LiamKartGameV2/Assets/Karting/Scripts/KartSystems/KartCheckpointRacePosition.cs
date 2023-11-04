@@ -8,6 +8,7 @@ public class KartCheckpointRacePosition : KartComponent
     [HideInInspector] public int racePos;
     [HideInInspector] public Checkpoint targetCheckpoint;
     [HideInInspector] public int currentLap = 1;
+    [HideInInspector] public bool readyToFinish = false;
 
     private void Start()
     {

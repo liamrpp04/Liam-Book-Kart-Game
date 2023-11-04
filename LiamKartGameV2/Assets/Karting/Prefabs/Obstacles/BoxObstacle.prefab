@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 361129961}
-  m_Layer: 16
+  m_Layer: 17
   m_Name: RenderTrigger (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 591033344}
   - component: {fileID: 591033343}
   - component: {fileID: 591033346}
-  m_Layer: 16
+  m_Layer: 17
   m_Name: RenderTrigger (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   - component: {fileID: 618964773}
   - component: {fileID: 618964772}
   - component: {fileID: 618964775}
-  m_Layer: 16
+  m_Layer: 17
   m_Name: RenderTrigger (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 625146436}
   - component: {fileID: 625146435}
   - component: {fileID: 625146438}
-  m_Layer: 16
+  m_Layer: 17
   m_Name: RenderTrigger (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 911293821}
   - component: {fileID: 911293820}
   - component: {fileID: 911293823}
-  m_Layer: 16
+  m_Layer: 17
   m_Name: RenderTrigger (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -506,7 +506,7 @@ GameObject:
   - component: {fileID: 1010685751}
   - component: {fileID: 1010685749}
   - component: {fileID: 1010685753}
-  m_Layer: 16
+  m_Layer: 17
   m_Name: RenderTrigger (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -620,7 +620,7 @@ GameObject:
   - component: {fileID: 1744372456}
   - component: {fileID: 1744372455}
   - component: {fileID: 1744372458}
-  m_Layer: 16
+  m_Layer: 17
   m_Name: RenderTrigger (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -868,6 +868,9 @@ MonoBehaviour:
   targetTag: Player
   afterBhv: 0
   OnTargetTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTargetTriggerExit:
     m_PersistentCalls:
       m_Calls: []
 --- !u!65 &7420683105128995544

@@ -9,8 +9,10 @@ public class BoxObstacle : MonoBehaviour
     {
         targetTrigger.OnTargetTriggerEnter.AddListener(other =>
         {
-            KartDamage mudBlocker = other.GetComponentInParent<KartDamage>();
-            mudBlocker?.TakeDamage(0.15f);
+            KartDamage kartDamage = other.GetComponentInParent<KartDamage>();
+            if (kartDamage.isPlayer)
+                SFXManager.PlaySound("boxCrash");
+            kartDamage?.TakeDamage(0f);
             StartCoroutine(DestroyBox());
         });
     }
@@ -23,7 +25,7 @@ public class BoxObstacle : MonoBehaviour
         foreach (Transform part in transform.GetChild(1))
         {
             Rigidbody rb = part.GetComponent<Rigidbody>();
-            rb.AddForce(new Vector3(Random.Range(0, 1f), Random.Range(0, 1f), Random.Range(0, 1f)), ForceMode.VelocityChange);
+            rb.AddForce(new Vector3(Random.Range(-1, 1f), Random.Range(0, 1f), Random.Range(-1f, 1f)) * 8f, ForceMode.VelocityChange);
         }
 
         yield return new WaitForSeconds(4f);

@@ -136,31 +136,40 @@ public class CheckpointsManager : MonoBehaviour
 
         if (IsLastChecker(currentChecker) && IsFirstChecker(nextChecker))
         {
-            print("VUELTA COMPLETA");
-
-            if (kart.currentLap == 3)
+            kart.readyToFinish = true;
+        }
+        else if (IsFirstChecker(currentChecker))
+        {
+            if (kart.readyToFinish)
             {
-                // FINISH ITS RACE ...
-                if (kart.isPlayer)
-                {
-                    if (kart.racePos == 1)
-                    {
-                        // PLAYER WIN ...
-                        WinLoseHUD.Instance.ShowWinMessage();
-                        ChangeSceneFadeUI.Instance.ChangeScene("WinScene", 5f);
-                    }
-                    else
-                    {
-                        // PLAYER LOSE ...
-                        WinLoseHUD.Instance.ShowLoseMessage();
-                        ChangeSceneFadeUI.Instance.ChangeScene("LoseScene", 5f);
+                print("VUELTA COMPLETA");
 
+                if (kart.currentLap == 3)
+                {
+                    // FINISH ITS RACE ...
+                    if (kart.isPlayer)
+                    {
+                        if (kart.racePos == 1)
+                        {
+                            // PLAYER WIN ...
+                            WinLoseHUD.Instance.ShowWinMessage();
+                            ChangeSceneFadeUI.Instance.ChangeScene("WinScene", 5f);
+                        }
+                        else
+                        {
+                            // PLAYER LOSE ...
+                            WinLoseHUD.Instance.ShowLoseMessage();
+                            ChangeSceneFadeUI.Instance.ChangeScene("LoseScene", 5f);
+
+                        }
                     }
                 }
-            }
-            else
-            {
-                kart.currentLap++;
+                else
+                {
+                    kart.currentLap++;
+                }
+
+                kart.readyToFinish = false;
             }
         }
 
