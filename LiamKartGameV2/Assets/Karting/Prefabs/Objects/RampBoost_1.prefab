@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4629852986452921417}
   - component: {fileID: 2580448799403319627}
-  - component: {fileID: 1859352137}
   - component: {fileID: 1859352138}
   m_Layer: 15
   m_Name: RampBoost_1
@@ -84,22 +83,11 @@ MonoBehaviour:
   OnTargetTriggerEnter:
     m_PersistentCalls:
       m_Calls: []
+  OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
   boostForce: 20
   directional: {fileID: 2580448799234208103}
---- !u!64 &1859352137
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4629852986452921420}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
 --- !u!136 &1859352138
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -196,10 +184,20 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7173972798489652484, guid: 4102206a84e5fd140b4487286a1e81c3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 119
+      objectReference: {fileID: 0}
     - target: {fileID: 7173972798489652485, guid: 4102206a84e5fd140b4487286a1e81c3,
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7173972798489652485, guid: 4102206a84e5fd140b4487286a1e81c3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7173972798489652486, guid: 4102206a84e5fd140b4487286a1e81c3,
         type: 3}
@@ -7066,7 +7064,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &2580448798785008369
 Animator:
-  serializedVersion: 5
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -7083,7 +7081,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2580448799256402241
 PrefabInstance:
   m_ObjectHideFlags: 0
